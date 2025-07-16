@@ -1,9 +1,24 @@
-import React from 'react'
+"use client";
+import React from "react";
+import { useSearchParams } from "next/navigation";
+import Sidebar from "@/components/Layouts/Sidebar";
 
-const page = () => {
+const Home = () => {
+  const searchParams = useSearchParams();
+  const tab = searchParams.get("tab");
+
   return (
-    <div>page</div>
-  )
-}
+    <div className="md:flex hidden">
+      <div className="">
+        <Sidebar />
+      </div>
 
-export default page
+      <div className="w-full p-6">
+        {tab === "addpost" && <div>Add Post</div>}
+        {tab === "allposts" && <div>All Posts</div>}
+      </div>
+    </div>
+  );
+};
+
+export default Home;

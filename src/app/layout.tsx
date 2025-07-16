@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import CheckingAdmin from "@/components/Secure/CheckingAdmin";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -8,13 +9,12 @@ const poppins = Poppins({
   weight: ["500", "600", "700", "800"],
 });
 
-
 export const metadata: Metadata = {
   title: "Admin Dashboard",
   description: "ToolDu Admin Dashboard",
-  icons:{
-    icon:"/favicon.ico"
-  }
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -26,9 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${poppins.variable} antialiased`}
-        cs-shortcut-listen="true"
+        cz-shortcut-listen="true"
       >
-        {children}
+        <CheckingAdmin>{children}</CheckingAdmin>
       </body>
     </html>
   );
