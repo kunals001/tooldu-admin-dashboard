@@ -2,8 +2,10 @@
 import React from "react";
 import { useSearchParams } from "next/navigation";
 import Sidebar from "@/components/Layouts/Sidebar";
-import AddPost from "@/components/ConvertImagePost/AddPost";
-import AllPosts from "@/components/ConvertImagePost/AllPosts";
+import dynamic from "next/dynamic";
+
+const AddPost = dynamic(() => import("@/components/ConvertImagePost/AddPost"), { ssr: false });
+const AllPosts = dynamic(() => import("@/components/ConvertImagePost/AllPosts"), { ssr: false });
 
 const Home = () => {
   const searchParams = useSearchParams();
@@ -15,7 +17,7 @@ const Home = () => {
         <Sidebar />
       </div>
 
-      <div className="w-full p-6">
+      <div className="w-full h-screen overflow-y-scroll hide-scrollbar">
         {tab === "addpost" && <AddPost/>}
         {tab === "allposts" && <AllPosts/>}
       </div>

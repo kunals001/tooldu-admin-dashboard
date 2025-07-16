@@ -1,20 +1,26 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useAuthStore } from "@/stores/useAuthStore";
 import { Loader2 } from "lucide-react";
 
 const CheckingAdmin = ({ children }: { children: React.ReactNode }) => {
   const { admin, checkAuth, checkingAuth } = useAuthStore();
   const [isClient, setIsClient] = useState(false);
+  const [tabParam, setTabParam] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
-    setIsClient(true); // Avoid hydration mismatch
-    checkAuth();       // Run auth check
+    setIsClient(true);
+    checkAuth();
+
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get("tab");
+      setTabParam(tab);
+    }
   }, [checkAuth]);
 
   useEffect(() => {
@@ -22,14 +28,12 @@ const CheckingAdmin = ({ children }: { children: React.ReactNode }) => {
       if (!admin) {
         router.push("/login");
       } else {
-        // ✅ Admin is logged in — if no tab selected, redirect to ?tab=allposts
-        const tab = searchParams.get("tab");
-        if (pathname === "/" && !tab) {
-          router.replace("/?tab=allposts"); // use replace to avoid adding to history
+        if (pathname === "/" && !tabParam) {
+          router.replace("/?tab=allposts");
         }
       }
     }
-  }, [isClient, checkingAuth, admin, pathname, searchParams, router]);
+  }, [isClient, checkingAuth, admin, pathname, tabParam, router]);
 
   if (!isClient || checkingAuth) {
     return (
