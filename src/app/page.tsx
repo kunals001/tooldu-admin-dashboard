@@ -2,6 +2,8 @@
 import React from "react";
 import { useSearchParams } from "next/navigation";
 import Sidebar from "@/components/Layouts/Sidebar";
+import AddPost from "@/components/ConvertImagePost/AddPost";
+import AllPosts from "@/components/ConvertImagePost/AllPosts";
 
 const Home = () => {
   const searchParams = useSearchParams();
@@ -14,8 +16,8 @@ const Home = () => {
       </div>
 
       <div className="w-full p-6">
-        {tab === "addpost" && <div>Add Post</div>}
-        {tab === "allposts" && <div>All Posts</div>}
+        {tab === "addpost" && <AddPost/>}
+        {tab === "allposts" && <AllPosts/>}
       </div>
     </div>
   );

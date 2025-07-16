@@ -35,7 +35,7 @@ const Sidebar = () => {
       </div>
 
       <div className="w-full">
-        <button onClick={logout} className="md:text-[1.1vw]text-red-400 hover:text-zinc-100 hover:bg-red-400 rounded-md transition-all duration-300 ease-in-out px-[1vw] py-[.2vw] bg-zinc-100 w-full cursor-pointer">
+        <button onClick={logout} className="md:text-[1.1vw] text-red-400 hover:text-zinc-100 hover:bg-red-400 rounded-md transition-all duration-300 ease-in-out px-[1vw] py-[.2vw] bg-zinc-100 w-full cursor-pointer">
           Logout
         </button>
       </div>
