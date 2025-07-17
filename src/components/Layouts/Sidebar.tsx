@@ -11,12 +11,12 @@ const Sidebar = () => {
   const {logout} = useAuthStore();
 
   const links = [
-    { name: "Add Post", url: "/?tab=addpost", tab: "addpost" },
-    { name: "All Posts", url: "/?tab=allposts", tab: "allposts" },
+    { name: "Add Convert Post", url: "/?tab=addconvertpost", tab: "addconvertpost" },
+    { name: "All Convert Posts", url: "/?tab=allconvertposts", tab: "allconvertposts" },
   ];
 
   return (
-    <div className="w-[12vw] h-screen border-r border-zinc-600 p-4 bg-zinc-800 flex flex-col justify-between">
+    <div className="w-[14vw] h-screen border-r border-zinc-600 p-4 bg-zinc-800 flex flex-col justify-between">
       <div className="flex flex-col gap-2">
         {links.map((link, index) => {
           const isActive = activeTab === link.tab;

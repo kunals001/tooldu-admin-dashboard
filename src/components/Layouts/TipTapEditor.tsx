@@ -32,10 +32,12 @@ interface Props {
 const TiptapEditor: React.FC<Props> = ({ content, onChange }) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        underline: false,
+        link: false,
+      }),
       Underline,
       Link.configure({ openOnClick: false }),
       TextAlign.configure({ types: ["heading", "paragraph"] }),
@@ -56,7 +58,7 @@ const TiptapEditor: React.FC<Props> = ({ content, onChange }) => {
     editable: true,
     injectCSS: true,
     parseOptions: {},
-    immediatelyRender: false, 
+    immediatelyRender: false,
   });
 
   if (!mounted || !editor) return null;

@@ -19,6 +19,8 @@ const AddPost = () => {
 
   const { addpost, loading } = useConvertImagePost();
 
+  console.log(bottomPart)
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -53,7 +55,7 @@ const AddPost = () => {
           Create Converter Post
         </h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col md:w-[40vw] gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col md:w-[60vw] gap-4">
           <input
             type="text"
             placeholder="Title goes here"

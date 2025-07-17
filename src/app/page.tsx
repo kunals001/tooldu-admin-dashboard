@@ -18,8 +18,8 @@ const Home = () => {
       </div>
 
       <div className="w-full h-screen overflow-y-scroll hide-scrollbar">
-        {tab === "addpost" && <AddPost/>}
-        {tab === "allposts" && <AllPosts/>}
+        {tab === "addconvertpost" && <AddPost/>}
+        {tab === "allconvertposts" && <AllPosts/>}
       </div>
     </div>
   );
